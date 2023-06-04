@@ -1,0 +1,20 @@
+targets:
+#  - 8.8.8.8
+#  - 8.8.4.4
+#  - 2001:4860:4860::8888
+#  - 2001:4860:4860::8844
+  - 10.250.196.13
+  - 10.250.196.14
+
+dns:
+  refresh: 2m15s
+  nameserver: 10.250.11.1
+
+ping:
+  interval: 2s
+  timeout: 3s
+  history-size: 42
+  size: 120
+
+options:
+  disableIPv6: false
