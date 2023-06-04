@@ -1,0 +1,10 @@
+version: "3.9"
+services:
+  guacamole:
+    image: flcontainers/guacamole
+    container_name: guacamole
+    restart: always
+    volumes:
+      - ./pgdata:/config
+    ports:
+      - 8089:8080

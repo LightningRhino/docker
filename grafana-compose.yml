@@ -1,0 +1,54 @@
+version: "3.9"
+
+services:
+ 
+  grafana:
+    image: grafana/grafana-oss:latest
+    container_name: grafana
+    ports:
+      - "80:3000"
+    volumes:
+      - ./grafana-data:/var/lib/grafana
+    users: ":"
+    restart: unless-stopped
+    environment:
+      - TZ=Europe/Berlin
+
+  prometheus:
+    image: prom/prometheus
+    container_name: prometheus
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./prometheus.yml:/prometheus/prometheus.yml
+      - ./prometheus-data:/prometheus
+    users: ":"
+    restart: unless-stopped
+    command:
+      - "--storage.tsdb.retention.time=15d"
+    environment:
+      - TZ=Europe/Berlin
+  
+#  influxdb:
+#    image: influxdb:latest
+#    container_name: influxdb
+#    ports:
+#      - "8086:8086"
+#    volumes:
+#      - ./influxdb-data:/var/lib/influxdb2
+#      - ./influxdb-config:/etc/influxdb2
+#    restart: unless-stopped
+#    environment:
+#      - TZ=Europe/Berlin
+
+ping-exporter:
+  # see https://github.com/czerwonk/ping_exporter/blob/main/config/testdata/config_test.yml
+    image: czerwonk/ping_exporter
+    container_name: ping-exporter
+    ports:
+      - "9427:9427"
+    volumes:
+      - ./ping-exporter-data:/config 
+    restart: unless-stopped
+    environment:
+    - "TZ=Europe/Berlin"

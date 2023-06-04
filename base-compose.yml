@@ -1,0 +1,53 @@
+version: "3.9"
+
+services:
+# entweder portainer ODER pagent nutzen!
+
+  portainer:
+    image: portainer/portainer-ce
+    restart: unless-stopped
+    ports:
+      - 9443:9443
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ./portainer_data:/data
+
+  pagent:
+    image: portainer/agent 
+    hostname: portaineragent
+    container_name: portaineragent
+    ports:
+      - '9001:9001'
+    restart: unless-stopped
+    volumes:
+      - '/var/run/docker.sock:/var/run/docker.sock'
+      - '/var/lib/docker/volumes:/var/lib/docker/volumes'
+
+# cadvisor am besten vom Paketmanagement installieren. 'apt install cadvisor'
+  cadvisor:
+    # latest tag is not updated, check latest release https://github.com/google/cadvisor/releases 
+    image: gcr.io/cadvisor/cadvisor:v0.47.0     
+    container_name: mycadvisor
+    ports:
+      - "8080:8080"
+    volumes:
+      - /:/rootfs:ro
+      - /var/run:/var/run:ro
+      - /sys:/sys:ro
+      - /var/lib/docker/:/var/lib/docker:ro
+      - /dev/disk/:/dev/disk:ro
+    devices:
+      - /dev/kmsg
+    restart: unless-stopped
+    privileged: true
+    environment:
+    - TZ=Europe/Berlin
+
+  watchtower:
+    image: containrrr/watchtower
+    restart: unless-stopped
+    environment:
+      - TZ=Europe/Berlin
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+    command: --schedule "0 35 3 * * *"
