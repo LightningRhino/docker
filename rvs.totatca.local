@@ -1,0 +1,20 @@
+$TTL    604800
+; SOA record with MNAME and RNAME updated
+@       IN      SOA     totatca.local. root.totatca.local. (
+                              2         ; Serial Note: increment after each change
+                         604800         ; Refresh
+                          86400         ; Retry
+                        2419200         ; Expire
+                         604800 )       ; Negative Cache TTL
+; Name server record 
+@       IN      NS      dns-1.totatca.local.
+; A record for Name Server
+dns-1   IN      A       192.168.1.15
+; PTR record for Name Server
+15      IN      PTR     dns-1.totatca.local.
+; PTR record for Mail Server
+10      IN      PTR     mail.totatca.local.
+; PTR record for Web Server
+21      IN      PTR     www.totatca.local.
+; PTR record for Clients
+101     IN      PTR     client1.totatca.local.

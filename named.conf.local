@@ -1,0 +1,15 @@
+// Define the Forward zone
+// My domain: totatca.local
+// Forward file called fwd.totatca.local
+zone "totatca.local" IN { 
+	type master;
+	// Path of Forward file [ Step 5 ]
+	file "/etc/bind/totatca/fwd.totatca.local";
+};
+// Define the Reverse zone
+// Reverse file called: rvs.totatca.local
+zone "1.168.192.in-addr.arpa" IN {
+        type master;
+        // Path of Reverse file [ Step 5 ]
+        file "/etc/bind/totatca/rvs.totatca.local";
+};
