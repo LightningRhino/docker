@@ -1,6 +1,6 @@
 // Define LAN network
-acl MYLAN {
-	192.168.1.0/24;
+acl EVAL {
+	10.250.196.0/24;
 };
 options {
 	// Default directory
@@ -8,12 +8,12 @@ options {
 	// Allow queries from localhost and LAN network
 	allow-query {
 		localhost;
-		MYLAN;
+		EVAL;
 	};
-	// Use Google DNS as a forwarder
+	// Use other DNS as a forwarder
 	forwarders{
-		8.8.8.8 ;
-		8.8.4.4 ;
+		10.250.1.11 ;
+		10.250.1.12 ;
 	};
 	// Allow recursive queries
 	recursion yes;

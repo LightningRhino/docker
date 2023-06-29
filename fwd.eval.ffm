@@ -1,0 +1,22 @@
+$TTL    604800
+; SOA record with MNAME and RNAME updated
+@       IN      SOA     eval.ffm. root.eval.ffm. (
+                              3         ; Serial Note: increment after each change
+                         604800         ; Refresh
+                          86400         ; Retry
+                        2419200         ; Expire
+                         604800 )       ; Negative Cache TTL
+; Name server record 
+@       IN      NS      dns1.eval.ffm.
+; A record for name server
+dns1   IN      A       10.250.196.2
+
+; Mail handler or MX record for the domain eval.ffm
+;eval.ffm.    IN     MX   10   mail.eval.ffm.
+
+; A record for Mail server
+;mail    IN      A       10.250.196.10
+; A record for web server
+;www     IN      A       10.250.196.21
+; A record for clients
+docker0  IN      A       10.250.196.25

@@ -1,15 +1,15 @@
 // Define the Forward zone
-// My domain: totatca.local
-// Forward file called fwd.totatca.local
-zone "totatca.local" IN { 
+// My domain: eval.ffm
+// Forward file called fwd.eval.ffm
+zone "eval.ffm" IN { 
 	type master;
 	// Path of Forward file [ Step 5 ]
-	file "/etc/bind/totatca/fwd.totatca.local";
+	file "/etc/bind/eval/fwd.eval.ffm";
 };
 // Define the Reverse zone
-// Reverse file called: rvs.totatca.local
-zone "1.168.192.in-addr.arpa" IN {
+// Reverse file called: rvs.eval.ffm
+zone "196.250.10.in-addr.arpa" IN {
         type master;
         // Path of Reverse file [ Step 5 ]
-        file "/etc/bind/totatca/rvs.totatca.local";
+        file "/etc/bind/eval/rvs.eval.ffm";
 };
