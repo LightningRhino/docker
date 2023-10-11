@@ -1,8 +1,13 @@
+# as root
+apt install sudo
+usermod -aG sudo $USERNAME
+
+# as user
 sudo apt update && apt upgrade -y
 sudo apt install htop nano git curl -y
 cd ~
 curl -fsSL https://get.docker.com -o get-docker.sh
-sh ./get-docker.sh
+sudo sh get-docker.sh
 sudo usermod -aG docker $USERNAME
 cd ~ && git clone https://github.com/holema/jitsi-meet-torture.git
 cd ~/jitsi-meet-torture
