@@ -4,7 +4,7 @@ usermod -aG sudo $USERNAME
 
 # as user
 sudo apt update && apt upgrade -y
-sudo apt install htop nano git curl -y
+sudo apt install htop nano git curl tmux -y
 cd ~
 curl -fsSL https://get.docker.com -o get-docker.sh
 sudo sh get-docker.sh
