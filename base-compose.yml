@@ -26,7 +26,7 @@ services:
 # cadvisor am besten vom Paketmanagement installieren. 'apt install cadvisor'
   cadvisor:
     # latest tag is not updated, check latest release https://github.com/google/cadvisor/releases 
-    image: gcr.io/cadvisor/cadvisor:v0.47.2     
+    image: gcr.io/cadvisor/cadvisor:v0.48.0
     container_name: cadvisor
     ports:
       - "8080:8080"
